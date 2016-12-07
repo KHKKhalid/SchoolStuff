@@ -22,30 +22,28 @@ void string_reverse(char str[])
 // a. Delete a character from a string
 void delete_char(char str[], char c)
 {
-	int found = 0;
-    int len = strlen(str);
-	for(int i = 0; i != len; ++ i)
+	int i = 0, len = strlen(str);
+	for( ; i != len; ++ i)
     {
     	if(str[i] == c)
-    		found = 1;
-
-        if(found == 1)
-        {
-        	str[i] = str[i+1];
-        }
+    		break;
     }
+
+    for( ; i != len; ++ i)
+    	str[i] = str[i+1];
 }
 
 // Question 2
 // b. Count the occurrence of a given character in a given string
 int count_occurrence(char str[], char c)
 {
-	int count = 0;
-    int len = strlen(str);
-	for(int i = 0; i != len; ++ i)
+	int i = 0, count = 0;
+	while(str[i] != '\0')
     {
-    	if(str[i] == c)
+        if(str[i] == c)
     		count ++;
+
+    	++ i;
     }
     return count;
 }
