@@ -132,7 +132,7 @@ void ListInsertSorted(list L, int item)
 // Question 6: Write a function that accepts two sorted linked lists L1 and L2
 // and merge them into a third linked list L3
 // Note: this version of function would work only if the two linked lists had
-// the same number of nodes. Go below for the other version "MergeSortedLists".
+// the same number of nodes.
 // Note: the solution of this depends on the concept of the previous function "ListInsertSorted"
 list MergeEqualSortedLists(list L1, list L2)
 {
