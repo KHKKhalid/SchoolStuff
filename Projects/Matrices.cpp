@@ -1,5 +1,4 @@
 #include <iostream.h>
-#include <stdlib.h>
 #include <conio.h>
 
 #define COLUMNS					4
