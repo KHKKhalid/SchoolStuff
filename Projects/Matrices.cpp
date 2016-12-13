@@ -108,11 +108,10 @@ void TransposeMatrices()
 
 void main()
 {
-	int quit = 0;
+	int quit = 0, op;
 	while(quit == 0)
     {
     	cout << "\nType the number of the operation you want:\n0.Input two matrices\n1.Sum\n2.Difference\n3.Multiply\n4.Transpose\n5.Quit\n";
-        int op;
 		cin >> op;
         switch(op)
         {

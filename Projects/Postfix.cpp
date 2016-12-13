@@ -77,8 +77,6 @@ int Operate(int operand1, int operand2, char operator_str[])
 	return 0;
 }
 
-
-
 int EvaluatePostfix(char postfix[])
 {
 	stack S;

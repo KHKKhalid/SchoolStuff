@@ -1,3 +1,13 @@
+/*
+	Question:  merge two sorted lists into a third sorted list
+    	regardless of the number of nodes in each list.
+
+    For example:
+    	L1: 2 6 10
+        L2: 5 7
+        L3 should be: 2 5 6 7 10
+*/
+
 #include <iostream.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -55,14 +65,6 @@ void printlist(list L)
 	}
 }
 
-/*
-	Question:  merge two sorted lists into a third sorted list regardless of the number of nodes in each list.
-    For example:
-    	L1: 2 6 10
-        L2: 5 7
-        L3 should be: 2 5 6 7 10
-*/
-
 void InsertSorted(list &L, int item)
 {
 	if(L == NULL)
@@ -97,7 +99,7 @@ void InsertSorted(list &L, int item)
                 	break;
             	}
         	}
-
+            
         	p = nextNode;
     	}
     }
