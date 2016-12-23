@@ -1,109 +1,115 @@
 #include <iostream.h>
 #include <conio.h>
 
-#define COLUMNS					4
-#define ROWS					3
-#define NUMBER_OF_MATRICES		2
+#define MATRIX_SIZE             2
 
 int
-	matrix[NUMBER_OF_MATRICES][ROWS][COLUMNS];
+	matrix1[MATRIX_SIZE][MATRIX_SIZE];
+    matrix2[MATRIX_SIZE][MATRIX_SIZE];
 
 
 void ReadMatrices()
 {
-	for(int m = 0; m < NUMBER_OF_MATRICES; ++ m)
-	{
-		cout << "Input values for Matrix " << (m+1) << " ( m[" << m << "] )\n";
+	cout << "Input values for the first matrix\n";
 
-		for(int i = 0; i < ROWS; ++ i)
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
+	{
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
 		{
-			for(int j = 0; j < COLUMNS; ++ j)
-			{
-				cout << "Enter value at row " << i << " | column " << j << ": ";
-				cin >> matrix[m][i][j];
-				cout << endl;
-			}
+			cout << "Enter value at row " << i << " | column " << j << ": ";
+			cin >> matrix1[i][j];
+		}
+	}
+
+    cout << "Input values for the second matrix\n";
+
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
+	{
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+		{
+			cout << "Enter value at row " << i << " | column " << j << ": ";
+			cin >> matrix2[i][j];
 		}
 	}
 }
 
 void SumMatrices()
 {
-	int eq[ROWS][COLUMNS];
-
-	for(int i = 0; i < ROWS; ++ i)
-		for(int j = 0; j < COLUMNS; ++ j)
-			eq[i][j] = matrix[0][i][j] + matrix[1][i][j];
-
-	cout << "\n\n";
-	for(int i = 0; i < ROWS; ++ i)
-	{
-		for(int j = 0; j < COLUMNS; ++ j)
-			cout << eq[i][j] << "\t";
-			
-		cout << "\n";
-	}
-	cout << "\n\n";
+    for(int i = 0; i != MATRIX_SIZE; ++ i)
+    {
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+        {
+            cout << (matrix1[i][j] + matrix2[i][j]);
+            cout << "\t";
+        }
+        cout << "\n";
+    }
 }
 
 void DiffMatrices()
 {
-	int eq[ROWS][COLUMNS];
-
-	for(int i = 0; i < ROWS; ++ i)
-		for(int j = 0; j < COLUMNS; ++ j)
-			eq[i][j] = matrix[0][i][j] - matrix[1][i][j];
-
-	cout << "\n\n";
-	for(int i = 0; i < ROWS; ++ i)
-	{
-		for(int j = 0; j < COLUMNS; ++ j)
-			cout << eq[i][j] << "\t";
-			
-		cout << "\n";
-	}
-	cout << "\n\n";
+    for(int i = 0; i != MATRIX_SIZE; ++ i)
+    {
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+        {
+            cout << (matrix1[i][j] - matrix2[i][j]);
+            cout << "\t";
+        }
+        cout << "\n";
+    }
 }
 
 void MultiplyMatrices()
 {
-	int eq[ROWS][COLUMNS];
-
-	for(int i = 0; i < ROWS; ++ i)
-		for(int j = 0; j < COLUMNS; ++ j)
-			eq[i][j] = matrix[0][i][j] * matrix[1][i][j];
-
-	cout << "\n\n";
-	for(int i = 0; i < ROWS; ++ i)
-	{
-		for(int j = 0; j < COLUMNS; ++ j)
-			cout << eq[i][j] << "\t";
-
-		cout << "\n";
-	}
-	cout << "\n\n";
+    int res = 0;
+    for(int row = 0; row != MATRIX_SIZE; ++ row)
+    {
+    	for(int col = 0; col != MATRIX_SIZE; ++ col)
+        {
+        	for(int each = 0; each != MATRIX_SIZE; ++ each)
+            {
+                res += matrix1[row][each] * matrix2[each][col];
+            }
+            cout << res << "\t";
+            res = 0;
+        }
+        cout << "\n";
+    }
 }
 
 void TransposeMatrices()
 {
-	int transpose[COLUMNS][ROWS];
+	int transpose[MATRIX_SIZE][MATRIX_SIZE];
 
-	for(int m = 0; m < NUMBER_OF_MATRICES; ++ m)
+    // Transpose: first matrix
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+			transpose[j][i] = matrix1[i][j];
+
+	cout << "\n\n";
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
 	{
-		for(int i = 0; i < ROWS; ++ i)
-			for(int j = 0; j < COLUMNS; ++ j)
-				transpose[j][i] = matrix[m][i][j];
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+			cout << transpose[i][j] << "\t";
 
-		cout << "\n\n";
-		for(int i = 0; i < COLUMNS; ++ i)
-		{
-			for(int j = 0; j < ROWS; ++ j)
-				cout << transpose[i][j] << "\t";
-
-			cout << "\n";
-		}
-		cout << "\n\n";	
+		cout << "\n";
 	}
+	cout << "\n\n";
+
+    // Transpose: second matrix
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+			transpose[j][i] = matrix2[i][j];
+
+	cout << "\n\n";
+	for(int i = 0; i != MATRIX_SIZE; ++ i)
+	{
+		for(int j = 0; j != MATRIX_SIZE; ++ j)
+			cout << transpose[i][j] << "\t";
+
+		cout << "\n";
+	}
+	cout << "\n\n";
 }
 
 void main()
