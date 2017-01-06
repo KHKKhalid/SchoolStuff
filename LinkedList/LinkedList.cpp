@@ -72,6 +72,7 @@ int ListIsIdentical(list L1, list L2)
     return identical; // return whether they are identical (1) or not (0)
 }
 
+// Question 5: Write a function that inserts an element in a sorted linked list
 void ListInsertSorted(list L, int item)
 {
 	if(L == NULL)
