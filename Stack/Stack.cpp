@@ -65,17 +65,87 @@ int checksorted(stack S)
     return sorted;
 }
 
+// Question 7: Write a function that inserts an element in a sorted stack
+void StackInsertSorted(stack &S, int item)
+{
+	int	x;
+
+	x = pop(S);
+    if(item < x)
+    {
+    	push(x, S);
+        push(item, S);
+        return;
+    }
+
+    stack tmp;
+    createStack(tmp);
+
+    int y, inserted = 0;
+
+    push(x, tmp);
+    while(!isemptyStack(S) && inserted == 0)
+    {
+		y = pop(S);
+
+       	if(x <= item && item <= y)
+       	{
+            push(item, tmp);
+            push(y, tmp);
+        	inserted = 1;
+       	}
+        else
+        {
+        	push(y, tmp);
+        	x = y;
+        }
+    }
+
+    if(inserted == 0)
+    {
+        push(item, tmp);
+    }
+
+    while(!isemptyStack(tmp))
+    {
+    	push(pop(tmp), S);
+    }
+}
+
+void PrintStack(stack S)
+{
+	stack t;
+    createStack(t);
+
+    int x;
+    while(!isemptyStack(S))
+    {
+    	x = pop(S);
+        cout << x << endl;
+    	push(x, t);
+    }
+
+    while(!isemptyStack(t))
+    {
+    	push(pop(t), S);
+    }
+}
+
 void main()
 {
 	stack S;
 	createStack(S);
 
-	push(5, S);
-	push(4, S);
-	push(3, S);
-	push(2, S);
+	push(40, S);
+	push(30, S);
+	push(20, S);
+	push(10, S);
 
 	cout << "sorted: " << checksorted(S) << endl;
+
+    StackInsertSorted(S, 25);
+
+    PrintStack(S);
 	
    	getch();
 }
